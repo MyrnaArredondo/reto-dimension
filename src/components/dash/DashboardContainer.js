@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Breadcrumb, Icon, Row, Col } from 'antd'
+import { Breadcrumb, Button, Icon, Row, Col } from 'antd'
 import { Line } from 'react-chartjs-2';
 const data = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -19,6 +19,9 @@ const data = {
 class DashboardContainer extends Component {
 
     render() {
+        const red = false;
+        const yellow = false;
+        const green = true;
         return (
             <div>
                 <Breadcrumb style={{ margin: '16px 0' }}>
@@ -29,7 +32,23 @@ class DashboardContainer extends Component {
                     <Row style={{ border: '1px solid goldenrod', padding: '8px', marginBottom: '10px' }}>
                         <Col span={24}>
                             <h1>Gráfica grande</h1>
-                            <Line data={data} width={1200} height={300} options={{ maintainAspectRatio: true, responsive: false, }} />
+                            <div>
+                                <div style={{ float: "left", marginLeft: "100px" }}>
+                                    <p style={{ textAlign: 'left' }}>
+                                        <strong>Nombre empresa: </strong> Nombre empresa. <br />
+                                        <strong>Ventas totales: </strong> $999,999. <br />
+                                        <strong>Tamaño empresa: </strong> Mediana. <br />
+                                    </p>
+                                </div>
+                                <div style={{ float: "right", marginRight: "100px" }}>
+                                    <h5>Veracidad de la información: </h5>
+                                    <Icon type="frown" theme={red ? 'twoTone' : 'outlined'} twoToneColor="#eb2f96" style={{ padding: '0 5px', fontSize: '24px' }} />
+                                    <Icon type="meh" theme={yellow ? 'twoTone' : 'outlined'} twoToneColor="#e7b416" style={{ padding: '0 5px', fontSize: '24px' }} />
+                                    <Icon type="smile" theme={green ? 'twoTone' : 'outlined'} twoToneColor="#2dc937" style={{ padding: '0 5px', fontSize: '24px' }} />
+                                </div>
+                            </div>
+                            <Line data={data} width={1200} height={300} options={{ maintainAspectRatio: true, responsive: false, }} /><br />
+                            <p><strong>Max Días Mora: </strong> 180 días.</p>
                         </Col>
                     </Row>
                     <Row gutter={8}>
